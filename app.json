@@ -40,7 +40,7 @@
     },
     "IS_VERIFY":{
       "description": "True= (on)or False = (off) , value = True/False ",
-      "value": "True"
+      "value": "False"
     },
     "VERIFY_EXPIRE":{
       "description": "yr token timeout in seconds, 86400 = 24h",
