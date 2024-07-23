@@ -30,10 +30,6 @@
       "description": "Enter your DATABASE_NAME ",
       "value": ""
     },
-    "IS_VERIFY":{
-      "description": "True= (on)or False = (off) , value = True/False ",
-      "value": "False"
-    },
     "API_HASH":{
       "description": "your api hash, take it from my.telegram.org",
       "value": ""
