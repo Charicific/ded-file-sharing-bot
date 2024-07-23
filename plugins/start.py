@@ -163,68 +163,47 @@ REPLY_ERROR = """<code>Use this command as a replay to any telegram message with
 
     
     
-async def is_user_in_channels(client: Client, user_id: int) -> bool:
-    try:
-        print(f"Checking membership for user {user_id} in channel {CHANNEL_1_ID}")
-        member_1 = await client.get_chat_member(chat_id=int(CHANNEL_1_ID), user_id=user_id)
-        member_2 = await client.get_chat_member(chat_id=int(CHANNEL_2_ID), user_id=user_id)
-        member_3 = await client.get_chat_member(chat_id=int(CHANNEL_3_ID), user_id=user_id)
-        if member_1.status not in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]:
-            return False
-        if member_2.status not in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]:
-            return False
-        if member_2.status not in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR, ChatMemberStatus.MEMBER]:
-            return False
-        return True
-    except UserNotParticipant:
-        print(f"User {user_id} is not a participant in one of the channels.")
-        return False
-    except Exception as e:
-        print(f"Error checking membership: {e}")
-        return False
-
-
-@Client.on_message(filters.command('start') & filters.private)
+@Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-    user_id = message.from_user.id
-    if not await is_user_in_channels(client, user_id):
-        buttons = [
+    buttons = [
+        [
+            InlineKeyboardButton(
+                "Join THE STERN LEGION",
+                url = "https://t.me/STERN_LEGION")
+        ],
+        [
+            InlineKeyboardButton(
+                "Join Anime Plaza ||「𝚂𝚃𝚁」",
+                url = client.invitelink),
+            InlineKeyboardButton(
+                "Join Cinema Stack",
+                url = "https://t.me/CinemaStack_Official")
+        ]
+    ]
+    try:
+        buttons.append(
             [
                 InlineKeyboardButton(
-                    "THE STERN LEGION",
-                    url=CHANNEL_1_LINK
+                    text = 'Try Again',
+                    url = f"https://t.me/{client.username}?start={message.command[1]}"
                 )
-            ],
-            [
-                [
-                    InlineKeyboardButton(
-                    "Anime Plaza ||「𝚂𝚃𝚁」",
-                    url=CHANNEL_2_LINK
-                ),
-                    InlineKeyboardButton(
-                    "Cinema Stack",
-                    url=CHANNEL_3_LINK
-                )
-                ]
             ]
-        ]
-        try:
-            buttons.append(
-                [
-                    InlineKeyboardButton(
-                        text='Try Again',
-                        url=f"https://t.me/{client.username}?start={message.command[1]}"
-                    )
-                ]
-            )
-        except IndexError:
-            pass
-        await message.reply_text(
-            "Please join the channels below to use the bot:",
-            reply_markup=InlineKeyboardMarkup(buttons)
         )
-    else:
-        await message.reply_text("You have access to use the bot now.")
+    except IndexError:
+        pass
+
+    await message.reply(
+        text = FORCE_MSG.format(
+                first = message.from_user.first_name,
+                last = message.from_user.last_name,
+                username = None if not message.from_user.username else '@' + message.from_user.username,
+                mention = message.from_user.mention,
+                id = message.from_user.id
+            ),
+        reply_markup = InlineKeyboardMarkup(buttons),
+        quote = True,
+        disable_web_page_preview = True
+    )
 
 @Bot.on_message(filters.command('users') & filters.private & filters.user(ADMINS))
 async def get_users(client: Bot, message: Message):
