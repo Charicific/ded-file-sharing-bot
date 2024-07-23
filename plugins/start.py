@@ -119,8 +119,8 @@ async def start_command(client: Client, message: Message):
                     await SD.delete()
                 except:
                     pass
-        return
-    else:
+
+        else:
         reply_markup = InlineKeyboardMarkup(
             [
                 [
