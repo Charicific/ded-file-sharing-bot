@@ -184,7 +184,7 @@ async def is_user_in_channels(client: Client, user_id: int) -> bool:
         return False
 
 
-@Bot.on_message(filters.command('start') & filters.private)
+@Client.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
     user_id = message.from_user.id
     if not await is_user_in_channels(client, user_id):
