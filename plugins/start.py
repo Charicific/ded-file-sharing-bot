@@ -22,6 +22,12 @@ from config import (
     DISABLE_CHANNEL_BUTTON,
     PROTECT_CONTENT,
     OWNER_ID,
+    CHANNEL_1_ID,
+    CHANNEL_2_ID,
+    CHANNEL_3_ID,
+    CHANNEL_1_LINK,
+    CHANNEL_2_LINK,
+    CHANNEL_3_LINK,
 )
 from helper_func import subscribed, encode, decode, get_messages
 from database.database import add_user, del_user, full_userbase, present_user
@@ -178,7 +184,7 @@ async def is_user_in_channels(client: Client, user_id: int) -> bool:
         return False
 
 
-@Client.on_message(filters.command('start') & filters.private)
+@Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
     user_id = message.from_user.id
     if not await is_user_in_channels(client, user_id):
