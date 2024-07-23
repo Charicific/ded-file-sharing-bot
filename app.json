@@ -16,7 +16,7 @@
     },
     "OWNER_ID": {
       "description": "An integer of consisting of your owner ID",
-      "value": "1250450587"
+      "value": ""
     },
     "APP_ID":{
       "description": "your app id, take it from my.telegram.org",
@@ -24,27 +24,15 @@
     },
     "DATABASE_URL": {
       "description": "Paste your mongo db url https://youtu.be/qFB0cFqiyOM?si=9rfd9AawasXLp_oE",
-      "value": "url"
+      "value": ""
     },
     "DATABASE_NAME":{
       "description": "Enter your DATABASE_NAME ",
-      "value": "ultroidxTeam"
-    },
-    "SHORTLINK_URL":{
-      "description": "Enter your SHORTLINK_URL , add yr shortner url . ",
-      "value": "api.shareus.io"
-    },
-    "SHORTLINK_API":{
-      "description": "Enter yourSHORTLINK_API , add yr shortner api ",
-      "value": "710b7ed8fdc5f89e9036000cc10121921e7732f1"
+      "value": ""
     },
     "IS_VERIFY":{
       "description": "True= (on)or False = (off) , value = True/False ",
       "value": "False"
-    },
-    "VERIFY_EXPIRE":{
-      "description": "yr token timeout in seconds, 86400 = 24h",
-      "value": "86400"
     },
     "API_HASH":{
       "description": "your api hash, take it from my.telegram.org",
@@ -52,19 +40,11 @@
     },
     "CHANNEL_ID":{
       "description": "make a channel (database channel), then make the bot as admin in channel, and it's id",
-      "value": "-100"
-    },
-    "FORCE_SUB_CHANNEL":{
-      "description": "id of the channel or group, if you want enable force sub feature else put 0",
-      "value": "0"
+      "value": ""
     },
     "START_MESSAGE": {
       "description": "Optional: start message of bot, use HTML parsemode format",
       "value": "Hello {first}\n\nI can store private files in Specified Channel and other users can access it from special link."
-    },
-    "FORCE_SUB_MESSAGE": {
-      "description": "Optional: Force Sub message of bot, use HTML parsemode format",
-      "value": "Hello {first}\n\n<b>You need to join in my Channel/Group to use me\n\nKindly Please join Channel</b>"
     },
     "ADMINS": {
       "description": "A space separated list of user_ids of Admins, they can only create links",
