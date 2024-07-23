@@ -37,6 +37,8 @@ IS_VERIFY = os.environ.get("IS_VERIFY", "False")
 TUT_VID = os.environ.get("TUT_VID", "https://t.me/Ultroid_Official/18") # shareus ka tut_vid he 
 
 #force sub channel id, if you want enable force sub
+FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", ""))
+
 CHANNEL_1_ID = '-1002029221637'
 CHANNEL_2_ID = '-1002161598191'
 CHANNEL_3_ID = '-1002151903452'
